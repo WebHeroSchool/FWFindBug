@@ -49,6 +49,7 @@ body {
 
 .container__rhomb-change {
 	display: block;
+	cursor: pointer;
 }
 .container__text-change {
 	color: #e0ffff;
@@ -75,6 +76,11 @@ body {
 	display: flex;
     justify-content: center;
     align-items: center;
+}
+.start__button-change {
+	cursor: pointer;
+	background: #8B0000;
+	color: #e0ffff;
 }
 .play__card {
 	position: relative;
