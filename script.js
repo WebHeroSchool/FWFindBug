@@ -1,35 +1,75 @@
-// function cursorPlaceOnLevel() {
-// 	let rhombes = document.querySelectorAll('.container__rhomb');
-// 	let texts = document.querySelectorAll('.container__text');
-//  	rhombes.forEach(rhomb => rhomb.classList.add('container__rhomb-change'));
-//  	texts.forEach(text => text.classList.add('container__text-change'));
-//  };
-// function cursorRemoveOnLevel() {
-// 	let rhombes = document.querySelectorAll('.container__rhomb');
-// 	let texts = document.querySelectorAll('.container__text');
-//  	rhombes.forEach(rhomb => rhomb.classList.remove('container__rhomb-change'));
-//  	texts.forEach(text => text.classList.remove('container__text-change'));
-// };
+let containers = document.querySelectorAll('.container__text');
+let playingField = document.createElement('div');
+playingField.classList.add('field__wrap');
+let menuScreen = document.getElementById('menu__screen');
+let menu = document.getElementById('menu');
+let startButton = document.getElementById('start__button');
 
-// let containers = document.querySelectorAll('.general');
-// containers.forEach((container) => container.addEventListener('mouseover', cursorPlaceOnLevel));
-// containers.forEach((container) => container.addEventListener('mouseout', cursorRemoveOnLevel));
-
-let containers = document.querySelectorAll('.general');
-let rhomb = document.querySelector('.container__rhomb');
-let text = document.querySelector('.container__text');
-
-let cursorPlaceOnLevel = event => {
-	event.currentTarget.classList.add('container__text-change');
+let chooseLevel = (event) => {
+	containers.forEach((container) => container.classList.remove('rhomb'));
+	event.currentTarget.classList.add('rhomb');
 };
-let cursorRemoveOnLevel = event => {
-	event.currentTarget.classList.remove('container__text-change');
+containers.forEach((container) => container.addEventListener('click', chooseLevel));
+
+function startGame() {
+	let level = document.querySelector('.rhomb').getAttribute('id');
+	let currentNumberOfCards = card => card;
+	let numberOfCards = currentNumberOfCards(level);
+	menuScreen.remove();
+	menu.appendChild(playingField);
+	let cards = () => {
+		function addCards() {
+			let newCard = document.createElement('div');
+			newCard.classList.add('field__card');
+			let invertCard = document.createElement('img');
+			invertCard.classList.add('card__back');
+			invertCard.src = 'img/inverted-card.png';
+			let facialCard = document.createElement('img');
+			facialCard.classList.add('card__front');
+			facialCard.src = 'img/game-over.png';
+			playingField.appendChild(newCard);
+			newCard.appendChild(invertCard);
+			newCard.appendChild(facialCard);
+		}
+		addCards();
+	};
+	function addField(difficultyLevel) {
+		switch (difficultyLevel) {
+			case 'simple': 
+				for (let i = 0; i < 3; i++) {
+					cards(level);
+				}
+				numberOfCards = 3;
+				break;
+			case 'middle':
+				for (let i = 0; i < 6; i++) {
+					cards(level);
+				}
+				numberOfCards = 6;
+				break;
+			case 'complex':
+				for (let i = 0; i < 9; i++) {
+					cards(level);
+				}
+				numberOfCards = 9;
+				break;
+		};
+		let addedCards = document.querySelectorAll('.field__card');
+		let random = Math.floor(Math.random() * numberOfCards);
+		for (i = 0; i < numberOfCards; i++) {
+			if (i === random) addedCards[i].lastElementChild.src='img/card-bag.png';
+		};
+		addedCards.forEach((element) => element.addEventListener('click', function(){
+			element.classList.toggle('active');
+			addedCards.forEach((item) => item.addEventListener('click', showMenu));
+		}));
+	};
+	addField(level);
 };
-containers.forEach((container) => container.addEventListener('mouseover', cursorPlaceOnLevel));
-containers.forEach((container) => container.addEventListener('mouseout', cursorRemoveOnLevel));
+startButton.addEventListener('click', startGame);
 
-let button = document.querySelector('.start__button');
-button.addEventListener('mouseover', event => event.target.classList.add('start__button-change'));
-button.addEventListener('mouseout', event => event.target.classList.remove('start__button-change'));
-
-
+let showMenu = function() {
+	menu.appendChild(menuScreen);
+	playingField.innerHTML = '';
+	playingField.remove();
+};

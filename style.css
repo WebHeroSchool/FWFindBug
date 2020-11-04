@@ -18,7 +18,7 @@ body {
 	margin: 0 0 0 5px;
 }
 .level__container {
-	margin: 0 0 0 110px;
+	margin: 0 0 0 100px;
 	max-width: 275px;
 	min-height: 225px;
 	display: flex;
@@ -30,32 +30,32 @@ body {
 	align-items: center;
 	justify-content: flex-start;
 }
-.container__rhomb {
-	display: none;
-	width: 18px;
-    height: 18px;
-    background: #D62B2E;;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+.rhomb::before {
+	background: url(img/rectangle.png) no-repeat;
+	background-size: cover;
+    border: none;
+    content: "";
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 22px;
+    left: 5px;
 }
 .container__text {
-	margin: 0 0 0 23px;
+	margin: 0 0 0 0px;
+	padding: 0 0 0 50px;
 	font-size: 50px;
 	line-height: 59px;
+	position: relative;
 }
-
-.container__rhomb-change {
-	display: block;
+.container__text:hover {
+	color: #D62B2E;
 	cursor: pointer;
 }
 .container__text-change {
 	color: #8B0000;
 	cursor: pointer;
 }
-
 .play__container {
 	display: flex;
 	justify-content: space-between;
@@ -77,7 +77,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-.start__button-change {
+.start__button:hover {
 	cursor: pointer;
 	background: #8B0000;
 	color: #e0ffff;
@@ -92,4 +92,47 @@ body {
 .card__two {
 	position: absolute;
 	left: 180px;
+}
+.field__wrap {
+	margin: 340px auto;
+	padding: 0 0 0 40px;
+	max-width: 702px;
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row wrap;
+	align-content: center;
+	perspective: 1000px;
+}
+.field__card {
+	margin: 10px 0 10px 0;
+	cursor: pointer;
+	position: relative;
+  	width: 218px;
+	height: 341px;
+	transition: transform 0.5s;
+	transform-style: preserve-3d;
+}
+.card__back:hover {
+	transform: rotate(-5deg) translateY(-25px);
+	box-shadow:  0 14px 28px rgba(0,0,0,0.65);
+}
+.card__back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	transition: 0.5s;
+}
+.card__front {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+.active {
+  transform: rotateY(180deg);
+}
+@media(max-width: ) {
+	
 }
