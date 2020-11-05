@@ -1,11 +1,23 @@
 body {
+	zoom: 75%;
 	font-family: roboto;
 	color: #fff;
 	background: url(img/background.png);
 	margin: 0;
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.menu {
+	margin: 130px 0 0 105px;
+}
+.menu__screen {
+	margin: 0;
+	max-width: 1440px;
+	min-height: 1024px;
 }
 .header {
-	margin: 130px 0 60px 100px;
+	margin: 0 0 60px 0;
 }
 .header__title {
 	font-size: 57px;
@@ -15,10 +27,8 @@ body {
 .header__discription {
 	font-size: 19px;
 	line-height: 22px;
-	margin: 0 0 0 5px;
 }
 .level__container {
-	margin: 0 0 0 100px;
 	max-width: 275px;
 	min-height: 225px;
 	display: flex;
@@ -56,11 +66,13 @@ body {
 	color: #8B0000;
 	cursor: pointer;
 }
+.play__wrap {
+	max-width: 1440px;
+	width: 1270px;
+}
 .play__container {
 	display: flex;
 	justify-content: space-between;
-	max-width: 700px;
-	margin: 0 0 0 100px;
 }
 .play__start {
 	margin: 110px 0 0 0;
@@ -87,21 +99,24 @@ body {
 }
 .card__one {
 	position: absolute;
-	left: 50px;
+}
+.card__one {
+	position: absolute;
+	left: -120px;
+	z-index: -1;
 }
 .card__two {
 	position: absolute;
-	left: 180px;
 }
 .field__wrap {
-	margin: 340px auto;
-	padding: 0 0 0 40px;
+	min-height: 800px;
+	margin: 0 0 0 340px;
+	padding: 0;
 	max-width: 702px;
 	display: flex;
 	justify-content: space-between;
 	flex-flow: row wrap;
 	align-content: center;
-	perspective: 1000px;
 }
 .field__card {
 	margin: 10px 0 10px 0;
@@ -133,6 +148,19 @@ body {
 .active {
   transform: rotateY(180deg);
 }
-@media(max-width: ) {
-	
+
+@media(min-width: 1441px) {
+	body {
+		zoom: 85%;
+	}
+}
+@media(max-width: 1160px) {
+	.play__wrap {
+		width: 1000px;
+	}
+	.field__wrap {
+	    min-height: 800px;
+	    max-width: 1300px;
+	    margin: 0;
+	}
 }
