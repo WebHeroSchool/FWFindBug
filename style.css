@@ -149,9 +149,19 @@ body {
   transform: rotateY(180deg);
 }
 
-@media(min-width: 1441px) {
+@media(min-width: 1400px) {
 	body {
 		zoom: 85%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.field__wrap {
+		margin: 0;
+		max-width: 1400px;
+	}
+	.field__card {
+		margin: 0 10px 10px 0;
 	}
 }
 @media(max-width: 1160px) {
