@@ -5,7 +5,7 @@ body {
 	background: url(img/background.png);
 	margin: 0;
 	box-sizing: border-box;
-	background-repeat: no-repeat;
+	/*background-repeat: no-repeat;*/
 	background-size: cover;
 }
 .menu {
@@ -172,5 +172,15 @@ body {
 	    min-height: 800px;
 	    max-width: 1300px;
 	    margin: 0;
+	}
+}
+@media(max-width: 1070px) {
+	.field__wrap {
+	    max-width: 1000px;
+	}
+}
+@media(max-width: 840px) {
+	.field__wrap {
+	    max-width: 830px;
 	}
 }
